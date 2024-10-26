@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Article",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for the article."
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "The title of the article."
+    },
+    "content": {
+      "type": "string",
+      "description": "The main body content of the article."
+    },
+    "authorId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the author (user) who wrote the article."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the article was created."
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time when the article was last updated."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 50,
+        "description": "A tag associated with the article."
+      },
+      "description": "A list of tags associated with the article."
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "description": "A URL pointing to an image associated with the article."
+    },
+    "category": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "The category under which the article is classified."
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rel": {
+            "type": "string",
+            "description": "The relationship of the link."
+          },
+          "href": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URL to the related resource."
+          },
+          "method": {
+            "type": "string",
+            "description": "HTTP method to use for the link (GET, POST, DELETE, etc.)."
+          }
+        },
+        "required": ["rel", "href", "method"]
+      },
+      "description": "Links to related resources and actions."
+    }
+  },
+  "required": ["id", "title", "content", "authorId", "createdAt", "links"],
+  "additionalProperties": {"type": "string", "pattern": "$[a-z]*"}
+}

@@ -1,0 +1,40 @@
+{
+    "$schema": "../schemas/article.json",
+    "id": "e7c78a68-bb1c-4b47-a5bb-39cb5d4b0674",
+    "title": "Understanding HATEOAS in REST APIs",
+    "content": "HATEOAS is an acronym for Hypermedia as the Engine of Application State. It is a constraint of the REST application architecture...",
+    "authorId": "4b12bfe6-7d2d-4a8b-8be2-9b44f6543e32",
+    "createdAt": "2024-10-26T10:00:00Z",
+    "updatedAt": "2024-10-26T12:00:00Z",
+    "tags": ["HATEOAS", "REST", "API"],
+    "image": "https://example.com/images/hateoas-example.jpg",
+    "category": "Technology",
+    "links": [
+      {
+        "rel": "self",
+        "href": "https://api.example.com/articles/e7c78a68-bb1c-4b47-a5bb-39cb5d4b0674",
+        "method": "GET"
+      },
+      {
+        "rel": "edit",
+        "href": "https://api.example.com/articles/e7c78a68-bb1c-4b47-a5bb-39cb5d4b0674/edit",
+        "method": "PUT"
+      },
+      {
+        "rel": "delete",
+        "href": "https://api.example.com/articles/e7c78a68-bb1c-4b47-a5bb-39cb5d4b0674",
+        "method": "DELETE"
+      },
+      {
+        "rel": "author",
+        "href": "https://api.example.com/users/4b12bfe6-7d2d-4a8b-8be2-9b44f6543e32",
+        "method": "GET"
+      },
+      {
+        "rel": "comments",
+        "href": "https://api.example.com/articles/e7c78a68-bb1c-4b47-a5bb-39cb5d4b0674/comments",
+        "method": "GET"
+      }
+    ]
+  }
+  

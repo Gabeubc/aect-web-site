@@ -1,0 +1,170 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "Blog Article API",
+      "version": "1.0.0",
+      "description": "API for managing blog articles, including CRUD operations and HATEOAS links."
+    },
+    "servers": [
+      {
+        "url": "https://api.example.com",
+        "description": "Main API Server"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Articles",
+        "description": "Operations related to articles"
+      }
+    ],
+    "paths": {
+      "/articles": {
+        "get": {
+          "summary": "Get a list of articles",
+          "operationId": "getArticles",
+          "tags": ["Articles"],
+          "responses": {
+            "200": {
+              "description": "A list of articles",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "../schemas/article.json"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new article",
+          "operationId": "createArticle",
+          "tags": ["Articles"],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../schemas/article.json"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Article created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "../schemas/article.json"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/articles/{id}": {
+        "get": {
+          "summary": "Get a specific article by ID",
+          "operationId": "getArticleById",
+          "tags": ["Articles"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "A single article",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "../schemas/article.json"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Article not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update an existing article",
+          "operationId": "updateArticle",
+          "tags": ["Articles"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../schemas/article.json"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Article updated",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "../schemas/article.json"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Article not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a specific article by ID",
+          "operationId": "deleteArticle",
+          "tags": ["Articles"],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Article deleted"
+            },
+            "404": {
+              "description": "Article not found"
+            }
+          }
+        }
+      }
+    }
+  }
+  
