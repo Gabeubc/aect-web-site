@@ -7,6 +7,7 @@ const articles = [
 
 let nextId = 3;
 
+// move logic to services and integrate db ( FIREBASE )
 function createArticle(article) {
     const newArticle = { id: nextId++, ...article };
     articles.push(newArticle);

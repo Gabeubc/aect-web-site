@@ -1,16 +1,19 @@
-// Import required modules
+// server.js
+
 const express = require('express');
+const cors = require('cors'); // CROSS ORIGIN RESSOURCE SHARING
+const bodyParser = require('body-parser');
+const article = require('./routes/article');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware to parse JSON bodies
-app.use(express.json());
-
-// Import routes
-const articleRoutes = require('./routes/article');
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
 
 // Use routes
-app.use('/articles', articleRoutes);
+app.use('/articles', article);
 
 // Start the server
 app.listen(port, () => {
