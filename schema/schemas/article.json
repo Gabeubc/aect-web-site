@@ -32,15 +32,6 @@
       "format": "date-time",
       "description": "The date and time when the article was last updated."
     },
-    "tags": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "maxLength": 50,
-        "description": "A tag associated with the article."
-      },
-      "description": "A list of tags associated with the article."
-    },
     "image": {
       "type": "string",
       "format": "uri",
